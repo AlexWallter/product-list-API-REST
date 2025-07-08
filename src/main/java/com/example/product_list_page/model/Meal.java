@@ -1,0 +1,83 @@
+package com.example.product_list_page.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+//import jakarta.persistence.Table;
+//import jakarta.persistence.Column;
+/*
+ * spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=sa
+spring.datasource.password=
+
+spring.h2.console.enabled=true
+ring.h2.console.path=/h2-console
+ */
+
+//@Table(name = "tb_meals")
+@Entity
+public class Meal {
+    
+    @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+    //@Column(unique = true, name = "id")
+    //@Column(name = "image")
+    private String image;
+    //@Column(unique = true, name = "name")
+    private String name;
+    //@Column(unique = true, name = "category")
+    private String category;
+    //@Column(name = "price")
+    private Double price;
+    
+    public Meal() {
+    }
+
+    public String getImage() {
+        return image;
+    }
+    
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    public Double getPrice() {
+        return price;
+    }
+    
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Meal [id=" + id + ", image=" + image + ", name=" + name + ", category=" + category + ", price=" + price
+                + "]";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+}
