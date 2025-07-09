@@ -1,7 +1,5 @@
 package com.example.product_list_page.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +26,7 @@ public class MealController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Meal> getMealId(@PathVariable Long id) {
+    public Meal getMealId(@PathVariable Long id) {
         return mealService.getMealById(id);
     }
 

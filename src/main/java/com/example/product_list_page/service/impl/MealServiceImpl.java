@@ -1,6 +1,6 @@
 package com.example.product_list_page.service.impl;
 
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,17 +20,23 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public Optional<Meal> getMealById(Long id) {
-        return repository.findById(id);
+    public Meal getMealById(Long id) {
+        return repository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     public void addMeal(Meal meal) {
+        if (repository.existsByName(meal.getName())) {
+            throw new IllegalArgumentException("this meal already exists"); 
+        }
         repository.save(meal);
     }
 
     @Override
     public void removeMeal(Long id) {
+        if (!repository.existsById(id)) {
+            throw new NoSuchElementException();
+        }
         repository.deleteById(id);
     }
     

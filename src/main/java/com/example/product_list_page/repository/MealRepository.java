@@ -7,5 +7,5 @@ import com.example.product_list_page.model.Meal;
 
 @Repository
 public interface MealRepository extends CrudRepository<Meal, Long>{
-    
+    boolean existsByName(String mealName);
 }

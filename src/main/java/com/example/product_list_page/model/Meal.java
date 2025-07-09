@@ -17,7 +17,7 @@ public class Meal {
     private String image;
     @Column(unique = true, name = "name")
     private String name;
-    @Column(unique = true, name = "category")
+    @Column(name = "category")
     private String category;
     @Column(name = "price")
     private Double price;
