@@ -4,32 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-//import jakarta.persistence.Table;
-//import jakarta.persistence.Column;
-/*
- * spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.username=sa
-spring.datasource.password=
+import jakarta.persistence.Column;
 
-spring.h2.console.enabled=true
-ring.h2.console.path=/h2-console
- */
-
-//@Table(name = "tb_meals")
-@Entity
+@Entity(name = "tb_meals")
 public class Meal {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, name = "id")
 	private Long id;
-    //@Column(unique = true, name = "id")
-    //@Column(name = "image")
+    @Column(name = "image")
     private String image;
-    //@Column(unique = true, name = "name")
+    @Column(unique = true, name = "name")
     private String name;
-    //@Column(unique = true, name = "category")
+    @Column(unique = true, name = "category")
     private String category;
-    //@Column(name = "price")
+    @Column(name = "price")
     private Double price;
     
     public Meal() {
