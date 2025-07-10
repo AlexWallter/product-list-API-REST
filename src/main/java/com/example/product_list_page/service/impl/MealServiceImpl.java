@@ -2,7 +2,6 @@ package com.example.product_list_page.service.impl;
 
 import java.util.NoSuchElementException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.product_list_page.model.Meal;
@@ -11,8 +10,12 @@ import com.example.product_list_page.service.MealService;
 
 @Service
 public class MealServiceImpl implements MealService {
-    @Autowired
-    MealRepository repository;
+
+    private final MealRepository repository;
+
+    public MealServiceImpl(MealRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Iterable<Meal> getAllMeals() {

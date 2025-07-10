@@ -1,6 +1,5 @@
 package com.example.product_list_page.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,12 @@ import com.example.product_list_page.service.MealService;
 @RestController
 @RequestMapping("/meal")
 public class MealController {
-    @Autowired
-    MealService mealService;
+
+    private final MealService mealService;
+
+    public MealController(MealService mealService) {
+        this.mealService = mealService;
+    }
 
     @GetMapping
     public ResponseEntity<Iterable<Meal>> getAllMeals() {
