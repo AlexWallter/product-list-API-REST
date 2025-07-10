@@ -7,4 +7,5 @@ public interface MealService {
     Meal getMealById(Long id);
     void addMeal(Meal meal);
     void removeMeal(Long id);
+    String updateMealPrice(Long id, double newPrice);
 }

@@ -1,6 +1,7 @@
 package com.example.product_list_page.service.impl;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,24 @@ public class MealServiceImpl implements MealService {
             throw new NoSuchElementException();
         }
         repository.deleteById(id);
+    }
+
+    @Override
+    public String updateMealPrice(Long id, double newPrice) {
+        Optional<Meal> temp = repository.findById(id);
+
+        if (temp.isPresent()) {
+            Meal toBeUpdated = temp.get();
+            double oldPrice = toBeUpdated.getPrice();
+            String message = "the price was updated from " + oldPrice + " to " + newPrice;
+            
+            toBeUpdated.setPrice(newPrice);
+            repository.save(toBeUpdated);
+            return message;
+        }
+        else {
+            throw new NoSuchElementException();
+        }
     }
     
 }
